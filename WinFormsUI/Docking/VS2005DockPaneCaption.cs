@@ -7,7 +7,7 @@ using System.Windows.Forms.VisualStyles;
 
 namespace WeifenLuo.WinFormsUI.Docking
 {
-    internal class VS2005DockPaneCaption : DockPaneCaptionBase
+    public class VS2005DockPaneCaption : DockPaneCaptionBase
     {
         private sealed class InertButton : InertButtonBase
         {
@@ -52,15 +52,17 @@ namespace WeifenLuo.WinFormsUI.Docking
         }
 
         #region consts
-        private const int _TextGapTop = 2;
-        private const int _TextGapBottom = 0;
-        private const int _TextGapLeft = 3;
-        private const int _TextGapRight = 3;
-        private const int _ButtonGapTop = 2;
-        private const int _ButtonGapBottom = 1;
-        private const int _ButtonGapBetween = 1;
-        private const int _ButtonGapLeft = 1;
-        private const int _ButtonGapRight = 2;
+        private static int _TextGapTop = 2;
+        private static int _TextGapBottom = 0;
+        private static int _TextGapLeft = 3;
+        private static int _TextGapRight = 3;
+        private static int _ButtonGapTop = 2;
+        private static int _ButtonGapBottom = 1;
+        private static int _ButtonGapBetween = 1;
+        private static int _ButtonGapLeft = 1;
+        private static int _ButtonGapRight = 2;
+        
+        private static int _IconSize = 16;
         #endregion
 
         private static Bitmap _imageButtonClose;
@@ -374,10 +376,10 @@ namespace WeifenLuo.WinFormsUI.Docking
 			if ( DockPane.ActiveContent != null ) {
 				var icon = DockPane.ActiveContent.DockHandler.Icon;
 				if ( icon != null && DockPane.DockPanel.ShowDocumentIcon ) {
-					int offset = ( rectCaption.Height - 16 ) / 2;
-					g.DrawIcon( icon, new Rectangle( offset, offset, 16, 16 ) );
-					rectCaptionText.X += 16 + offset;
-					rectCaptionText.Width -= 16 + offset;
+					int offset = ( rectCaption.Height - _IconSize ) / 2;
+					g.DrawIcon( icon, new Rectangle( offset, offset, _IconSize, _IconSize ) );
+					rectCaptionText.X += _IconSize + offset;
+					rectCaptionText.Width -= _IconSize + offset;
 				}
 			}
 
@@ -491,5 +493,20 @@ namespace WeifenLuo.WinFormsUI.Docking
             base.OnRightToLeftChanged(e);
             PerformLayout();
         }
+
+        public static void DpiScale(float dpiScale)
+        {
+            _TextGapTop = (int)(_TextGapTop * dpiScale);
+            _TextGapLeft = (int)(_TextGapLeft * dpiScale);
+            _TextGapRight = (int)(_TextGapRight * dpiScale);
+            _ButtonGapTop = (int)(_ButtonGapTop * dpiScale);
+            _ButtonGapBottom = (int)(_ButtonGapBottom * dpiScale);
+            _ButtonGapBetween = (int)(_ButtonGapBetween * dpiScale);
+            _ButtonGapLeft = (int)(_ButtonGapLeft * dpiScale);
+            _ButtonGapRight = (int)(_ButtonGapRight * dpiScale);
+
+            _IconSize = (int)(_IconSize * dpiScale);
+        }
+
     }
 }

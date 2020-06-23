@@ -22,7 +22,7 @@ namespace WeifenLuo.WinFormsUI.Docking {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    public class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -256,7 +256,7 @@ namespace WeifenLuo.WinFormsUI.Docking {
         internal static System.Drawing.Bitmap DockPane_AutoHide {
             get {
                 object obj = ResourceManager.GetObject("DockPane_AutoHide", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return new System.Drawing.Bitmap((System.Drawing.Bitmap)obj, (int)(((System.Drawing.Bitmap)obj).Width * DpiScale), (int)(((System.Drawing.Bitmap)obj).Width * DpiScale));
             }
         }
         
@@ -266,7 +266,7 @@ namespace WeifenLuo.WinFormsUI.Docking {
         internal static System.Drawing.Bitmap DockPane_Close {
             get {
                 object obj = ResourceManager.GetObject("DockPane_Close", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return new System.Drawing.Bitmap((System.Drawing.Bitmap)obj, (int)(((System.Drawing.Bitmap)obj).Width * DpiScale), (int)(((System.Drawing.Bitmap)obj).Width * DpiScale));
             }
         }
         
@@ -276,7 +276,7 @@ namespace WeifenLuo.WinFormsUI.Docking {
         internal static System.Drawing.Bitmap DockPane_Dock {
             get {
                 object obj = ResourceManager.GetObject("DockPane_Dock", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return new System.Drawing.Bitmap((System.Drawing.Bitmap)obj, (int)(((System.Drawing.Bitmap)obj).Width * DpiScale), (int)(((System.Drawing.Bitmap)obj).Width * DpiScale));
             }
         }
         
@@ -286,7 +286,7 @@ namespace WeifenLuo.WinFormsUI.Docking {
         internal static System.Drawing.Bitmap DockPane_Option {
             get {
                 object obj = ResourceManager.GetObject("DockPane_Option", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return new System.Drawing.Bitmap((System.Drawing.Bitmap)obj, (int)(((System.Drawing.Bitmap)obj).Width * DpiScale), (int)(((System.Drawing.Bitmap)obj).Width * DpiScale));
             }
         }
         
@@ -296,8 +296,11 @@ namespace WeifenLuo.WinFormsUI.Docking {
         internal static System.Drawing.Bitmap DockPane_OptionOverflow {
             get {
                 object obj = ResourceManager.GetObject("DockPane_OptionOverflow", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return new System.Drawing.Bitmap((System.Drawing.Bitmap)obj, (int)(((System.Drawing.Bitmap)obj).Width * DpiScale), (int)(((System.Drawing.Bitmap)obj).Width * DpiScale));
             }
         }
+
+        public static float DpiScale = 1.0F;
+
     }
 }

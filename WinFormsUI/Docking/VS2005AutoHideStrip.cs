@@ -6,7 +6,7 @@ using System.ComponentModel;
 
 namespace WeifenLuo.WinFormsUI.Docking
 {
-    internal class VS2005AutoHideStrip : AutoHideStripBase
+    public class VS2005AutoHideStrip : AutoHideStripBase
     {
         private class TabVS2005 : Tab
         {
@@ -31,17 +31,17 @@ namespace WeifenLuo.WinFormsUI.Docking
 
         }
 
-        private const int _ImageHeight = 16;
-        private const int _ImageWidth = 16;
-        private const int _ImageGapTop = 2;
-        private const int _ImageGapLeft = 4;
-        private const int _ImageGapRight = 2;
-        private const int _ImageGapBottom = 2;
-        private const int _TextGapLeft = 0;
-        private const int _TextGapRight = 0;
-        private const int _TabGapTop = 3;
-        private const int _TabGapLeft = 4;
-        private const int _TabGapBetween = 10;
+        private static int _ImageHeight = 16;
+        private static int _ImageWidth = 16;
+        private static int _ImageGapTop = 2;
+        private static int _ImageGapLeft = 4;
+        private static int _ImageGapRight = 2;
+        private static int _ImageGapBottom = 2;
+        private static int _TextGapLeft = 0;
+        private static int _TextGapRight = 0;
+        private static int _TabGapTop = 3;
+        private static int _TabGapLeft = 4;
+        private static int _TabGapBetween = 10;
 
         #region Customizable Properties
         public Font TextFont
@@ -354,7 +354,7 @@ namespace WeifenLuo.WinFormsUI.Docking
                             new Point(rectTransform.X, rectTransform.Y)
                         };
 
-                    using (Icon rotatedIcon = new Icon(((Form)content).Icon, 16, 16))
+                    using (Icon rotatedIcon = new Icon(((Form)content).Icon, _ImageWidth, _ImageHeight))
                     {
                         g.DrawImage(rotatedIcon.ToBitmap(), rotationPoints);
                     }
@@ -535,5 +535,19 @@ namespace WeifenLuo.WinFormsUI.Docking
         {
             return new TabVS2005(content);
         }
+
+        public static void DpiScale(float dpiScale)
+        {
+            _ImageHeight = (int)(_ImageHeight * dpiScale);
+            _ImageWidth = (int)(_ImageWidth * dpiScale);
+            _ImageGapTop = (int)(_ImageGapTop * dpiScale);
+            _ImageGapLeft = (int)(_ImageGapLeft * dpiScale);
+            _ImageGapRight = (int)(_ImageGapRight * dpiScale);
+            _ImageGapBottom = (int)(_ImageGapBottom * dpiScale);
+            _TabGapTop = (int)(_TabGapTop * dpiScale);
+            _TabGapLeft = (int)(_TabGapLeft * dpiScale);
+            _TabGapBetween = (int)(_TabGapBetween * dpiScale);
+        }
+
     }
 }

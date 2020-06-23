@@ -6,7 +6,7 @@ using System.ComponentModel;
 
 namespace WeifenLuo.WinFormsUI.Docking
 {
-    internal class VS2005DockPaneStrip : DockPaneStripBase
+    public class VS2005DockPaneStrip : DockPaneStripBase
     {
         private class TabVS2005 : Tab
         {
@@ -82,36 +82,36 @@ namespace WeifenLuo.WinFormsUI.Docking
 
         #region Constants
 
-        private const int _ToolWindowStripGapTop = 0;
-        private const int _ToolWindowStripGapBottom = 1;
-        private const int _ToolWindowStripGapLeft = 0;
-        private const int _ToolWindowStripGapRight = 0;
-        private const int _ToolWindowImageHeight = 16;
-        private const int _ToolWindowImageWidth = 16;
-        private const int _ToolWindowImageGapTop = 3;
-        private const int _ToolWindowImageGapBottom = 1;
-        private const int _ToolWindowImageGapLeft = 2;
-        private const int _ToolWindowImageGapRight = 0;
-        private const int _ToolWindowTextGapRight = 3;
-        private const int _ToolWindowTabSeperatorGapTop = 3;
-        private const int _ToolWindowTabSeperatorGapBottom = 3;
+        private static int _ToolWindowStripGapTop = 0;
+        private static int _ToolWindowStripGapBottom = 1;
+        private static int _ToolWindowStripGapLeft = 0;
+        private static int _ToolWindowStripGapRight = 0;
+        private static int _ToolWindowImageHeight = 16;
+        private static int _ToolWindowImageWidth = 16;
+        private static int _ToolWindowImageGapTop = 3;
+        private static int _ToolWindowImageGapBottom = 1;
+        private static int _ToolWindowImageGapLeft = 2;
+        private static int _ToolWindowImageGapRight = 0;
+        private static int _ToolWindowTextGapRight = 3;
+        private static int _ToolWindowTabSeperatorGapTop = 3;
+        private static int _ToolWindowTabSeperatorGapBottom = 3;
 
-        private const int _DocumentStripGapTop = 0;
-        private const int _DocumentStripGapBottom = 1;
-        private const int _DocumentTabMaxWidth = 200;
-        private const int _DocumentButtonGapTop = 4;
-        private const int _DocumentButtonGapBottom = 4;
-        private const int _DocumentButtonGapBetween = 0;
-        private const int _DocumentButtonGapRight = 3;
-        private const int _DocumentTabGapTop = 3;
-        private const int _DocumentTabGapLeft = 3;
-        private const int _DocumentTabGapRight = 3;
-        private const int _DocumentIconGapBottom = 2;
-        private const int _DocumentIconGapLeft = 8;
-        private const int _DocumentIconGapRight = 0;
-        private const int _DocumentIconHeight = 16;
-        private const int _DocumentIconWidth = 16;
-        private const int _DocumentTextGapRight = 3;
+        private static int _DocumentStripGapTop = 0;
+        private static int _DocumentStripGapBottom = 1;
+        private static int _DocumentTabMaxWidth = 200;
+        private static int _DocumentButtonGapTop = 4;
+        private static int _DocumentButtonGapBottom = 4;
+        private static int _DocumentButtonGapBetween = 0;
+        private static int _DocumentButtonGapRight = 3;
+        private static int _DocumentTabGapTop = 3;
+        private static int _DocumentTabGapLeft = 3;
+        private static int _DocumentTabGapRight = 3;
+        private static int _DocumentIconGapBottom = 0;
+        private static int _DocumentIconGapLeft = 8;
+        private static int _DocumentIconGapRight = 0;
+        private static int _DocumentIconHeight = 16;
+        private static int _DocumentIconWidth = 16;
+        private static int _DocumentTextGapRight = 3;
 
         #endregion
 
@@ -1518,5 +1518,32 @@ namespace WeifenLuo.WinFormsUI.Docking
             base.OnRightToLeftChanged(e);
             PerformLayout();
         }
+
+        public static void DpiScale(float dpiScale)
+        {
+            _ToolWindowStripGapBottom = (int)(_ToolWindowStripGapBottom * dpiScale);
+            _ToolWindowImageHeight = (int)(_ToolWindowImageHeight * dpiScale);
+            _ToolWindowImageWidth = (int)(_ToolWindowImageWidth * dpiScale);
+            _ToolWindowImageGapTop = (int)(_ToolWindowImageGapTop * dpiScale);
+            _ToolWindowImageGapBottom = (int)(_ToolWindowImageGapBottom * dpiScale);
+            _ToolWindowImageGapLeft = (int)(_ToolWindowImageGapLeft * dpiScale);
+            _ToolWindowTextGapRight = (int)(_ToolWindowTextGapRight * dpiScale);
+            _ToolWindowTabSeperatorGapTop = (int)(_ToolWindowTabSeperatorGapTop * dpiScale);
+            _ToolWindowTabSeperatorGapBottom = (int)(_ToolWindowTabSeperatorGapBottom * dpiScale);
+
+            _DocumentStripGapBottom = (int)(_DocumentStripGapBottom * dpiScale);
+            _DocumentTabMaxWidth = (int)(_DocumentTabMaxWidth * dpiScale);
+            _DocumentButtonGapTop = (int)(_DocumentButtonGapTop * dpiScale);
+            _DocumentButtonGapBottom = (int)(_DocumentButtonGapBottom * dpiScale);
+            _DocumentButtonGapRight = (int)(_DocumentButtonGapRight * dpiScale);
+            _DocumentTabGapTop = (int)(_DocumentTabGapTop * dpiScale);
+            _DocumentTabGapLeft = (int)(_DocumentTabGapLeft * dpiScale);
+            _DocumentTabGapRight = (int)(_DocumentTabGapRight * dpiScale);
+            _DocumentIconGapLeft = (int)(_DocumentIconGapLeft * dpiScale);
+            _DocumentIconHeight = (int)(_DocumentIconHeight * dpiScale);
+            _DocumentIconWidth = (int)(_DocumentIconWidth * dpiScale);
+            _DocumentTextGapRight = (int)(_DocumentTextGapRight * dpiScale);
+        }
+
     }
 }
